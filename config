@@ -1,0 +1,108 @@
+##############
+# Github.com #
+##############
+Host github.intel.com
+        Protocol 2
+        User esande2x
+        ServerAliveInterval 30
+        IdentityFile /home/esande2x/.ssh/internal.key
+
+Host github.com
+        Protocol 2
+        User git
+        ServerAliveInterval 30
+        IdentityFile /home/esande2x/.ssh/personal.key
+        ProxyCommand nc -x proxy.jf.intel.com:1080 %h %p
+
+
+
+##########
+# 01.org #
+##########
+ 
+Host a1.01.org a2.01.org 
+        Protocol 2
+        User esande2x
+        ServerAliveInterval 30
+        IdentityFile /home/esande2x/.ssh/01.org.key
+        ProxyCommand nc -x proxy.jf.intel.com:1080 %h %p
+
+Host *.vlan*.01.org
+        Protocol 2
+        User esande2x
+        ServerAliveInterval 30
+        IdentityFile /home/esande2x/.ssh/01.org.key
+        ProxyCommand ssh a1.01.org -W %h:%p
+
+Host a3.vlan14.01.org 
+        Protocol 2
+        User esande2x
+        ServerAliveInterval 30
+        IdentityFile /home/esande2x/.ssh/01.org.key
+        ProxyCommand ssh a3.01.org -W %h:%p
+ 
+##############
+# clearlinux #
+##############
+ 
+Host a1.clearlinux.org a2.clearlinux.org 
+        Protocol 2
+        User esande2x
+        ServerAliveInterval 30
+        IdentityFile /home/esande2x/.ssh/clearlinux.key
+        ProxyCommand nc -x proxy.jf.intel.com:1080 %h %p
+
+
+Host *.vlan*.clearlinux.org
+        Protocol 2
+        User esande2x
+        ServerAliveInterval 30
+        IdentityFile /home/esande2x/.ssh/clearlinux.key
+        ProxyCommand ssh a1.clearlinux.org -W %h:%p
+ 
+ 
+############
+# internal #
+############
+
+# all OTCIS-managed internal hosts
+Host *.intel.com
+        Protocol 2
+        User esande2x
+        ServerAliveInterval 30
+        IdentityFile /home/esande2x/.ssh/internal.key
+
+
+#########################
+# Isolated Environments #
+#########################
+# you only need this section if you have access to these
+
+Host *.clr.int
+        Protocol 2
+        User esande2x
+        ServerAliveInterval 30
+        ProxyCommand ssh clrgw.ostc.intel.com -W %h:%p
+        IdentityFile /home/esande2x/.ssh/internal.key
+
+Host *.clr-ext.int
+        Protocol 2
+        User esande2x
+        ServerAliveInterval 30
+        ProxyCommand ssh clrgw-ext.ostc.intel.com -W %h:%p
+        IdentityFile /home/esande2x/.ssh/internal.key
+
+Host *.clr-emb.int
+        Protocol 2
+        User esande2x
+        ServerAliveInterval 30
+        ProxyCommand ssh clrgw-emb.ostc.intel.com -W %h:%p
+        IdentityFile /home/esande2x/.ssh/internal.key
+
+Host *.aia.int
+        Protocol 2
+        User esande2x
+        ServerAliveInterval 30
+        ProxyCommand ssh aiagw.ostc.intel.com -W %h:%p
+        IdentityFile /home/esande2x/.ssh/internal.key
+
