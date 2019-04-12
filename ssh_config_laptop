@@ -1,0 +1,14 @@
+Host dcor
+    Protocol 2
+    User esande2x
+    HostName a2.01.org
+    IdentityFile ~/.ssh/01.org.key
+    ServerAliveInterval 30
+    LocalForward 3390 dcor.vlan11.01.org:3389
+    ProxyCommand connect-proxy -S proxy.jf.intel.com:1080 %h %p
+
+Host esande2x-desk1
+    Protocol 2
+    User esande2x
+    HostName esande2x-desk1.jf.intel.com
+    IdentityFile ~/.ssh/internal.key
