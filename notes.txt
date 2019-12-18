@@ -1,0 +1,10 @@
+## todays date
+date +"%Y%m%d"
+### date 3 years ago
+date +"%Y%m%d" -d "$expired_date-1095 days"
+
+### translate date pub_expired file
+date +"%Y%m%d" -f pub_expired.txt
+
+#grep for date in pub key
+grep -oP '(?<=(_)).*(?=_)' pub_audit.txt
